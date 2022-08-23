@@ -1,0 +1,203 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BIBLIOTECAModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="TBALUNO">
+    <Key>
+      <PropertyRef Name="IDALUNO" />
+    </Key>
+    <Property Name="IDALUNO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NOME" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="TELEFONE" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="CPF" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="RUA" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="BAIRRO" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="CIDADE" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="UF" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="MULTAS" Type="Int32" />
+    <Property Name="SITUACAO" Type="Boolean" />
+    <Property Name="MATRICULA" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="TBEMPRESTIMO" Relationship="Self.FK_TBALUNO" FromRole="TBALUNO" ToRole="TBEMPRESTIMO" />
+  </EntityType>
+  <EntityType Name="TBEDITORA">
+    <Key>
+      <PropertyRef Name="IDEDITORA" />
+    </Key>
+    <Property Name="IDEDITORA" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NOME" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="ENDERECO" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="BAIRRO" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="CIDADE" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="UF" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="TBLIVRO" Relationship="Self.FK_TBEDITORA" FromRole="TBEDITORA" ToRole="TBLIVRO" />
+  </EntityType>
+  <EntityType Name="TBEMPRESTIMO">
+    <Key>
+      <PropertyRef Name="IDEMPRESTIMO" />
+    </Key>
+    <Property Name="IDEMPRESTIMO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IDALUNO" Type="Int32" />
+    <Property Name="IDFUNCIONARIO" Type="Int32" />
+    <Property Name="HORA" Type="DateTime" Precision="3" />
+    <Property Name="DEVOLUCAO" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="TBALUNO" Relationship="Self.FK_TBALUNO" FromRole="TBEMPRESTIMO" ToRole="TBALUNO" />
+    <NavigationProperty Name="TBITEMEMPRESTIMO" Relationship="Self.FK_TBEMPRESTIMO" FromRole="TBEMPRESTIMO" ToRole="TBITEMEMPRESTIMO" />
+    <NavigationProperty Name="TBFUNCIONARIO" Relationship="Self.FK_TBFUNCIONARIO" FromRole="TBEMPRESTIMO" ToRole="TBFUNCIONARIO" />
+  </EntityType>
+  <EntityType Name="TBFUNCIONARIO">
+    <Key>
+      <PropertyRef Name="IDFUNCIONARIO" />
+    </Key>
+    <Property Name="IDFUNCIONARIO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NOME" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="TELEFONE" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="CPF" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="RUA" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="BAIRRO" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="CIDADE" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="UF" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="SENHA" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="EMAIL" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="TBEMPRESTIMO" Relationship="Self.FK_TBFUNCIONARIO" FromRole="TBFUNCIONARIO" ToRole="TBEMPRESTIMO" />
+  </EntityType>
+  <EntityType Name="TBITEMEMPRESTIMO">
+    <Key>
+      <PropertyRef Name="IDITEMEMPRESTIMO" />
+    </Key>
+    <Property Name="IDITEMEMPRESTIMO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IDEMPRESTIMO" Type="Int32" />
+    <Property Name="IDLIVRO" Type="Int32" />
+    <Property Name="DEVOLUCAO" Type="DateTime" Precision="3" />
+    <Property Name="IDPERIODICO" Type="Int32" />
+    <NavigationProperty Name="TBEMPRESTIMO" Relationship="Self.FK_TBEMPRESTIMO" FromRole="TBITEMEMPRESTIMO" ToRole="TBEMPRESTIMO" />
+    <NavigationProperty Name="TBLIVRO" Relationship="Self.FK_TBLIVRO" FromRole="TBITEMEMPRESTIMO" ToRole="TBLIVRO" />
+    <NavigationProperty Name="TBPERIODICO" Relationship="Self.FK_TBPERIODICO" FromRole="TBITEMEMPRESTIMO" ToRole="TBPERIODICO" />
+  </EntityType>
+  <EntityType Name="TBLIVRO">
+    <Key>
+      <PropertyRef Name="IDLIVRO" />
+    </Key>
+    <Property Name="IDLIVRO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IDEDITORA" Type="Int32" />
+    <Property Name="NOME" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="ASSUNTO" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="STATUS" Type="Boolean" />
+    <Property Name="AUTOR" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="TBEDITORA" Relationship="Self.FK_TBEDITORA" FromRole="TBLIVRO" ToRole="TBEDITORA" />
+    <NavigationProperty Name="TBITEMEMPRESTIMO" Relationship="Self.FK_TBLIVRO" FromRole="TBLIVRO" ToRole="TBITEMEMPRESTIMO" />
+  </EntityType>
+  <EntityType Name="TBPERIODICO">
+    <Key>
+      <PropertyRef Name="IDPERIODICO" />
+    </Key>
+    <Property Name="IDPERIODICO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NOME" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="AUTOR" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="ASSUNTO" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="STATUS_" Type="Boolean" />
+    <NavigationProperty Name="TBITEMEMPRESTIMO" Relationship="Self.FK_TBPERIODICO" FromRole="TBPERIODICO" ToRole="TBITEMEMPRESTIMO" />
+  </EntityType>
+  <Association Name="FK_TBALUNO">
+    <End Role="TBALUNO" Type="Self.TBALUNO" Multiplicity="0..1" />
+    <End Role="TBEMPRESTIMO" Type="Self.TBEMPRESTIMO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBALUNO">
+        <PropertyRef Name="IDALUNO" />
+      </Principal>
+      <Dependent Role="TBEMPRESTIMO">
+        <PropertyRef Name="IDALUNO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TBEDITORA">
+    <End Role="TBEDITORA" Type="Self.TBEDITORA" Multiplicity="0..1" />
+    <End Role="TBLIVRO" Type="Self.TBLIVRO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBEDITORA">
+        <PropertyRef Name="IDEDITORA" />
+      </Principal>
+      <Dependent Role="TBLIVRO">
+        <PropertyRef Name="IDEDITORA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TBEMPRESTIMO">
+    <End Role="TBEMPRESTIMO" Type="Self.TBEMPRESTIMO" Multiplicity="0..1" />
+    <End Role="TBITEMEMPRESTIMO" Type="Self.TBITEMEMPRESTIMO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBEMPRESTIMO">
+        <PropertyRef Name="IDEMPRESTIMO" />
+      </Principal>
+      <Dependent Role="TBITEMEMPRESTIMO">
+        <PropertyRef Name="IDEMPRESTIMO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TBFUNCIONARIO">
+    <End Role="TBFUNCIONARIO" Type="Self.TBFUNCIONARIO" Multiplicity="0..1" />
+    <End Role="TBEMPRESTIMO" Type="Self.TBEMPRESTIMO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBFUNCIONARIO">
+        <PropertyRef Name="IDFUNCIONARIO" />
+      </Principal>
+      <Dependent Role="TBEMPRESTIMO">
+        <PropertyRef Name="IDFUNCIONARIO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TBLIVRO">
+    <End Role="TBLIVRO" Type="Self.TBLIVRO" Multiplicity="0..1" />
+    <End Role="TBITEMEMPRESTIMO" Type="Self.TBITEMEMPRESTIMO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBLIVRO">
+        <PropertyRef Name="IDLIVRO" />
+      </Principal>
+      <Dependent Role="TBITEMEMPRESTIMO">
+        <PropertyRef Name="IDLIVRO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TBPERIODICO">
+    <End Role="TBPERIODICO" Type="Self.TBPERIODICO" Multiplicity="0..1" />
+    <End Role="TBITEMEMPRESTIMO" Type="Self.TBITEMEMPRESTIMO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBPERIODICO">
+        <PropertyRef Name="IDPERIODICO" />
+      </Principal>
+      <Dependent Role="TBITEMEMPRESTIMO">
+        <PropertyRef Name="IDPERIODICO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="BIBLIOTECAEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="TBALUNO" EntityType="Self.TBALUNO" />
+    <EntitySet Name="TBEDITORA" EntityType="Self.TBEDITORA" />
+    <EntitySet Name="TBEMPRESTIMO" EntityType="Self.TBEMPRESTIMO" />
+    <EntitySet Name="TBFUNCIONARIO" EntityType="Self.TBFUNCIONARIO" />
+    <EntitySet Name="TBITEMEMPRESTIMO" EntityType="Self.TBITEMEMPRESTIMO" />
+    <EntitySet Name="TBLIVRO" EntityType="Self.TBLIVRO" />
+    <EntitySet Name="TBPERIODICO" EntityType="Self.TBPERIODICO" />
+    <AssociationSet Name="FK_TBALUNO" Association="Self.FK_TBALUNO">
+      <End Role="TBALUNO" EntitySet="TBALUNO" />
+      <End Role="TBEMPRESTIMO" EntitySet="TBEMPRESTIMO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TBEDITORA" Association="Self.FK_TBEDITORA">
+      <End Role="TBEDITORA" EntitySet="TBEDITORA" />
+      <End Role="TBLIVRO" EntitySet="TBLIVRO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TBEMPRESTIMO" Association="Self.FK_TBEMPRESTIMO">
+      <End Role="TBEMPRESTIMO" EntitySet="TBEMPRESTIMO" />
+      <End Role="TBITEMEMPRESTIMO" EntitySet="TBITEMEMPRESTIMO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TBFUNCIONARIO" Association="Self.FK_TBFUNCIONARIO">
+      <End Role="TBFUNCIONARIO" EntitySet="TBFUNCIONARIO" />
+      <End Role="TBEMPRESTIMO" EntitySet="TBEMPRESTIMO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TBLIVRO" Association="Self.FK_TBLIVRO">
+      <End Role="TBLIVRO" EntitySet="TBLIVRO" />
+      <End Role="TBITEMEMPRESTIMO" EntitySet="TBITEMEMPRESTIMO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TBPERIODICO" Association="Self.FK_TBPERIODICO">
+      <End Role="TBPERIODICO" EntitySet="TBPERIODICO" />
+      <End Role="TBITEMEMPRESTIMO" EntitySet="TBITEMEMPRESTIMO" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="d1c38dbae04041768c2fab33e2e6c344" Name="Diagram1">
+        <EntityTypeShape EntityType="BIBLIOTECAModel.TBALUNO" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="BIBLIOTECAModel.TBEDITORA" Width="1.5" PointX="0.75" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="BIBLIOTECAModel.TBEMPRESTIMO" Width="1.5" PointX="3" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BIBLIOTECAModel.TBFUNCIONARIO" Width="1.5" PointX="0.75" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BIBLIOTECAModel.TBITEMEMPRESTIMO" Width="1.5" PointX="5.25" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BIBLIOTECAModel.TBLIVRO" Width="1.5" PointX="3" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="BIBLIOTECAModel.TBPERIODICO" Width="1.5" PointX="3" PointY="6.25" IsExpanded="true" />
+        <AssociationConnector Association="BIBLIOTECAModel.FK_TBALUNO" ManuallyRouted="false" />
+        <AssociationConnector Association="BIBLIOTECAModel.FK_TBEDITORA" ManuallyRouted="false" />
+        <AssociationConnector Association="BIBLIOTECAModel.FK_TBEMPRESTIMO" ManuallyRouted="false" />
+        <AssociationConnector Association="BIBLIOTECAModel.FK_TBFUNCIONARIO" ManuallyRouted="false" />
+        <AssociationConnector Association="BIBLIOTECAModel.FK_TBLIVRO" ManuallyRouted="false" />
+        <AssociationConnector Association="BIBLIOTECAModel.FK_TBPERIODICO" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,191 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BIBLIOTECAModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="TBALUNO">
+    <Key>
+      <PropertyRef Name="IDALUNO" />
+    </Key>
+    <Property Name="IDALUNO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NOME" Type="varchar" MaxLength="300" />
+    <Property Name="TELEFONE" Type="varchar" MaxLength="300" />
+    <Property Name="CPF" Type="varchar" MaxLength="300" />
+    <Property Name="RUA" Type="varchar" MaxLength="300" />
+    <Property Name="BAIRRO" Type="varchar" MaxLength="300" />
+    <Property Name="CIDADE" Type="varchar" MaxLength="300" />
+    <Property Name="UF" Type="varchar" MaxLength="10" />
+    <Property Name="MULTAS" Type="int" />
+    <Property Name="SITUACAO" Type="bit" />
+    <Property Name="MATRICULA" Type="varchar" MaxLength="300" />
+  </EntityType>
+  <EntityType Name="TBEDITORA">
+    <Key>
+      <PropertyRef Name="IDEDITORA" />
+    </Key>
+    <Property Name="IDEDITORA" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NOME" Type="varchar" MaxLength="300" />
+    <Property Name="ENDERECO" Type="varchar" MaxLength="300" />
+    <Property Name="BAIRRO" Type="varchar" MaxLength="300" />
+    <Property Name="CIDADE" Type="varchar" MaxLength="300" />
+    <Property Name="UF" Type="varchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="TBEMPRESTIMO">
+    <Key>
+      <PropertyRef Name="IDEMPRESTIMO" />
+    </Key>
+    <Property Name="IDEMPRESTIMO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IDALUNO" Type="int" />
+    <Property Name="IDFUNCIONARIO" Type="int" />
+    <Property Name="HORA" Type="datetime" />
+    <Property Name="DEVOLUCAO" Type="datetime" />
+  </EntityType>
+  <EntityType Name="TBFUNCIONARIO">
+    <Key>
+      <PropertyRef Name="IDFUNCIONARIO" />
+    </Key>
+    <Property Name="IDFUNCIONARIO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NOME" Type="varchar" MaxLength="300" />
+    <Property Name="TELEFONE" Type="varchar" MaxLength="300" />
+    <Property Name="CPF" Type="varchar" MaxLength="300" />
+    <Property Name="RUA" Type="varchar" MaxLength="300" />
+    <Property Name="BAIRRO" Type="varchar" MaxLength="300" />
+    <Property Name="CIDADE" Type="varchar" MaxLength="300" />
+    <Property Name="UF" Type="varchar" MaxLength="10" />
+    <Property Name="SENHA" Type="varchar" MaxLength="20" />
+    <Property Name="EMAIL" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="TBITEMEMPRESTIMO">
+    <Key>
+      <PropertyRef Name="IDITEMEMPRESTIMO" />
+    </Key>
+    <Property Name="IDITEMEMPRESTIMO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IDEMPRESTIMO" Type="int" />
+    <Property Name="IDLIVRO" Type="int" />
+    <Property Name="DEVOLUCAO" Type="datetime" />
+    <Property Name="IDPERIODICO" Type="int" />
+  </EntityType>
+  <EntityType Name="TBLIVRO">
+    <Key>
+      <PropertyRef Name="IDLIVRO" />
+    </Key>
+    <Property Name="IDLIVRO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IDEDITORA" Type="int" />
+    <Property Name="NOME" Type="varchar" MaxLength="300" />
+    <Property Name="ASSUNTO" Type="varchar" MaxLength="300" />
+    <Property Name="STATUS" Type="bit" />
+    <Property Name="AUTOR" Type="varchar" MaxLength="300" />
+  </EntityType>
+  <EntityType Name="TBPERIODICO">
+    <Key>
+      <PropertyRef Name="IDPERIODICO" />
+    </Key>
+    <Property Name="IDPERIODICO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NOME" Type="varchar" MaxLength="300" />
+    <Property Name="AUTOR" Type="varchar" MaxLength="300" />
+    <Property Name="ASSUNTO" Type="varchar" MaxLength="300" />
+    <Property Name="STATUS_" Type="bit" />
+  </EntityType>
+  <Association Name="FK_TBALUNO">
+    <End Role="TBALUNO" Type="Self.TBALUNO" Multiplicity="0..1" />
+    <End Role="TBEMPRESTIMO" Type="Self.TBEMPRESTIMO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBALUNO">
+        <PropertyRef Name="IDALUNO" />
+      </Principal>
+      <Dependent Role="TBEMPRESTIMO">
+        <PropertyRef Name="IDALUNO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TBEDITORA">
+    <End Role="TBEDITORA" Type="Self.TBEDITORA" Multiplicity="0..1" />
+    <End Role="TBLIVRO" Type="Self.TBLIVRO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBEDITORA">
+        <PropertyRef Name="IDEDITORA" />
+      </Principal>
+      <Dependent Role="TBLIVRO">
+        <PropertyRef Name="IDEDITORA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TBEMPRESTIMO">
+    <End Role="TBEMPRESTIMO" Type="Self.TBEMPRESTIMO" Multiplicity="0..1" />
+    <End Role="TBITEMEMPRESTIMO" Type="Self.TBITEMEMPRESTIMO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBEMPRESTIMO">
+        <PropertyRef Name="IDEMPRESTIMO" />
+      </Principal>
+      <Dependent Role="TBITEMEMPRESTIMO">
+        <PropertyRef Name="IDEMPRESTIMO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TBFUNCIONARIO">
+    <End Role="TBFUNCIONARIO" Type="Self.TBFUNCIONARIO" Multiplicity="0..1" />
+    <End Role="TBEMPRESTIMO" Type="Self.TBEMPRESTIMO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBFUNCIONARIO">
+        <PropertyRef Name="IDFUNCIONARIO" />
+      </Principal>
+      <Dependent Role="TBEMPRESTIMO">
+        <PropertyRef Name="IDFUNCIONARIO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TBLIVRO">
+    <End Role="TBLIVRO" Type="Self.TBLIVRO" Multiplicity="0..1" />
+    <End Role="TBITEMEMPRESTIMO" Type="Self.TBITEMEMPRESTIMO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBLIVRO">
+        <PropertyRef Name="IDLIVRO" />
+      </Principal>
+      <Dependent Role="TBITEMEMPRESTIMO">
+        <PropertyRef Name="IDLIVRO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TBPERIODICO">
+    <End Role="TBPERIODICO" Type="Self.TBPERIODICO" Multiplicity="0..1" />
+    <End Role="TBITEMEMPRESTIMO" Type="Self.TBITEMEMPRESTIMO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBPERIODICO">
+        <PropertyRef Name="IDPERIODICO" />
+      </Principal>
+      <Dependent Role="TBITEMEMPRESTIMO">
+        <PropertyRef Name="IDPERIODICO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="BIBLIOTECAModelStoreContainer">
+    <EntitySet Name="TBALUNO" EntityType="Self.TBALUNO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBEDITORA" EntityType="Self.TBEDITORA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBEMPRESTIMO" EntityType="Self.TBEMPRESTIMO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBFUNCIONARIO" EntityType="Self.TBFUNCIONARIO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBITEMEMPRESTIMO" EntityType="Self.TBITEMEMPRESTIMO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBLIVRO" EntityType="Self.TBLIVRO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBPERIODICO" EntityType="Self.TBPERIODICO" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_TBALUNO" Association="Self.FK_TBALUNO">
+      <End Role="TBALUNO" EntitySet="TBALUNO" />
+      <End Role="TBEMPRESTIMO" EntitySet="TBEMPRESTIMO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TBEDITORA" Association="Self.FK_TBEDITORA">
+      <End Role="TBEDITORA" EntitySet="TBEDITORA" />
+      <End Role="TBLIVRO" EntitySet="TBLIVRO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TBEMPRESTIMO" Association="Self.FK_TBEMPRESTIMO">
+      <End Role="TBEMPRESTIMO" EntitySet="TBEMPRESTIMO" />
+      <End Role="TBITEMEMPRESTIMO" EntitySet="TBITEMEMPRESTIMO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TBFUNCIONARIO" Association="Self.FK_TBFUNCIONARIO">
+      <End Role="TBFUNCIONARIO" EntitySet="TBFUNCIONARIO" />
+      <End Role="TBEMPRESTIMO" EntitySet="TBEMPRESTIMO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TBLIVRO" Association="Self.FK_TBLIVRO">
+      <End Role="TBLIVRO" EntitySet="TBLIVRO" />
+      <End Role="TBITEMEMPRESTIMO" EntitySet="TBITEMEMPRESTIMO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TBPERIODICO" Association="Self.FK_TBPERIODICO">
+      <End Role="TBPERIODICO" EntitySet="TBPERIODICO" />
+      <End Role="TBITEMEMPRESTIMO" EntitySet="TBITEMEMPRESTIMO" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

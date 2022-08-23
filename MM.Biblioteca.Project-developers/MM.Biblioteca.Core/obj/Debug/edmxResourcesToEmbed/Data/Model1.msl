@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="BIBLIOTECAModelStoreContainer" CdmEntityContainer="BIBLIOTECAEntities1">
+    <EntitySetMapping Name="TBALUNO">
+      <EntityTypeMapping TypeName="BIBLIOTECAModel.TBALUNO">
+        <MappingFragment StoreEntitySet="TBALUNO">
+          <ScalarProperty Name="IDALUNO" ColumnName="IDALUNO" />
+          <ScalarProperty Name="NOME" ColumnName="NOME" />
+          <ScalarProperty Name="TELEFONE" ColumnName="TELEFONE" />
+          <ScalarProperty Name="CPF" ColumnName="CPF" />
+          <ScalarProperty Name="RUA" ColumnName="RUA" />
+          <ScalarProperty Name="BAIRRO" ColumnName="BAIRRO" />
+          <ScalarProperty Name="CIDADE" ColumnName="CIDADE" />
+          <ScalarProperty Name="UF" ColumnName="UF" />
+          <ScalarProperty Name="MULTAS" ColumnName="MULTAS" />
+          <ScalarProperty Name="SITUACAO" ColumnName="SITUACAO" />
+          <ScalarProperty Name="MATRICULA" ColumnName="MATRICULA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TBEDITORA">
+      <EntityTypeMapping TypeName="BIBLIOTECAModel.TBEDITORA">
+        <MappingFragment StoreEntitySet="TBEDITORA">
+          <ScalarProperty Name="IDEDITORA" ColumnName="IDEDITORA" />
+          <ScalarProperty Name="NOME" ColumnName="NOME" />
+          <ScalarProperty Name="ENDERECO" ColumnName="ENDERECO" />
+          <ScalarProperty Name="BAIRRO" ColumnName="BAIRRO" />
+          <ScalarProperty Name="CIDADE" ColumnName="CIDADE" />
+          <ScalarProperty Name="UF" ColumnName="UF" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TBEMPRESTIMO">
+      <EntityTypeMapping TypeName="BIBLIOTECAModel.TBEMPRESTIMO">
+        <MappingFragment StoreEntitySet="TBEMPRESTIMO">
+          <ScalarProperty Name="IDEMPRESTIMO" ColumnName="IDEMPRESTIMO" />
+          <ScalarProperty Name="IDALUNO" ColumnName="IDALUNO" />
+          <ScalarProperty Name="IDFUNCIONARIO" ColumnName="IDFUNCIONARIO" />
+          <ScalarProperty Name="HORA" ColumnName="HORA" />
+          <ScalarProperty Name="DEVOLUCAO" ColumnName="DEVOLUCAO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TBFUNCIONARIO">
+      <EntityTypeMapping TypeName="BIBLIOTECAModel.TBFUNCIONARIO">
+        <MappingFragment StoreEntitySet="TBFUNCIONARIO">
+          <ScalarProperty Name="IDFUNCIONARIO" ColumnName="IDFUNCIONARIO" />
+          <ScalarProperty Name="NOME" ColumnName="NOME" />
+          <ScalarProperty Name="TELEFONE" ColumnName="TELEFONE" />
+          <ScalarProperty Name="CPF" ColumnName="CPF" />
+          <ScalarProperty Name="RUA" ColumnName="RUA" />
+          <ScalarProperty Name="BAIRRO" ColumnName="BAIRRO" />
+          <ScalarProperty Name="CIDADE" ColumnName="CIDADE" />
+          <ScalarProperty Name="UF" ColumnName="UF" />
+          <ScalarProperty Name="SENHA" ColumnName="SENHA" />
+          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TBITEMEMPRESTIMO">
+      <EntityTypeMapping TypeName="BIBLIOTECAModel.TBITEMEMPRESTIMO">
+        <MappingFragment StoreEntitySet="TBITEMEMPRESTIMO">
+          <ScalarProperty Name="IDITEMEMPRESTIMO" ColumnName="IDITEMEMPRESTIMO" />
+          <ScalarProperty Name="IDEMPRESTIMO" ColumnName="IDEMPRESTIMO" />
+          <ScalarProperty Name="IDLIVRO" ColumnName="IDLIVRO" />
+          <ScalarProperty Name="DEVOLUCAO" ColumnName="DEVOLUCAO" />
+          <ScalarProperty Name="IDPERIODICO" ColumnName="IDPERIODICO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TBLIVRO">
+      <EntityTypeMapping TypeName="BIBLIOTECAModel.TBLIVRO">
+        <MappingFragment StoreEntitySet="TBLIVRO">
+          <ScalarProperty Name="IDLIVRO" ColumnName="IDLIVRO" />
+          <ScalarProperty Name="IDEDITORA" ColumnName="IDEDITORA" />
+          <ScalarProperty Name="NOME" ColumnName="NOME" />
+          <ScalarProperty Name="ASSUNTO" ColumnName="ASSUNTO" />
+          <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+          <ScalarProperty Name="AUTOR" ColumnName="AUTOR" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TBPERIODICO">
+      <EntityTypeMapping TypeName="BIBLIOTECAModel.TBPERIODICO">
+        <MappingFragment StoreEntitySet="TBPERIODICO">
+          <ScalarProperty Name="IDPERIODICO" ColumnName="IDPERIODICO" />
+          <ScalarProperty Name="NOME" ColumnName="NOME" />
+          <ScalarProperty Name="AUTOR" ColumnName="AUTOR" />
+          <ScalarProperty Name="ASSUNTO" ColumnName="ASSUNTO" />
+          <ScalarProperty Name="STATUS_" ColumnName="STATUS_" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

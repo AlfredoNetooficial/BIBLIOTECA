@@ -1,0 +1,12 @@
+C:\Users\eualf\source\repos\MM.Biblioteca\MM.Biblioteca.Core\bin\Debug\MM.Biblioteca.Core.dll.config
+C:\Users\eualf\source\repos\MM.Biblioteca\MM.Biblioteca.Core\bin\Debug\MM.Biblioteca.Core.dll
+C:\Users\eualf\source\repos\MM.Biblioteca\MM.Biblioteca.Core\bin\Debug\MM.Biblioteca.Core.pdb
+C:\Users\eualf\source\repos\MM.Biblioteca\MM.Biblioteca.Core\bin\Debug\EntityFramework.dll
+C:\Users\eualf\source\repos\MM.Biblioteca\MM.Biblioteca.Core\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\eualf\source\repos\MM.Biblioteca\MM.Biblioteca.Core\bin\Debug\EntityFramework.xml
+C:\Users\eualf\source\repos\MM.Biblioteca\MM.Biblioteca.Core\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\eualf\source\repos\MM.Biblioteca\MM.Biblioteca.Core\obj\Debug\MM.Biblioteca.Core.csproj.AssemblyReference.cache
+C:\Users\eualf\source\repos\MM.Biblioteca\MM.Biblioteca.Core\obj\Debug\MM.Biblioteca.Core.csproj.CoreCompileInputs.cache
+C:\Users\eualf\source\repos\MM.Biblioteca\MM.Biblioteca.Core\obj\Debug\MM.Biblioteca.Core.csproj.CopyComplete
+C:\Users\eualf\source\repos\MM.Biblioteca\MM.Biblioteca.Core\obj\Debug\MM.Biblioteca.Core.dll
+C:\Users\eualf\source\repos\MM.Biblioteca\MM.Biblioteca.Core\obj\Debug\MM.Biblioteca.Core.pdb
